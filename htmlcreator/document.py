@@ -22,7 +22,7 @@ class HTMLDocument:
             '<html lang="en">\n'
             '<head>\n'
             '<meta charset="UTF-8">\n'
-            f'<title> {self.title} </title>\n'
+            f'<title>{self.title}</title>\n'
             f'<style type="text/css">\n{self.style}</style>\n'
             f'{self.head}'
             '</head>\n'
