@@ -18,7 +18,7 @@ Useful for:
 
 ## Usage
 
-See example [build_document.py](./examples/build_document.py) and [first_document.html](https://htmlpreview.github.io/?https://github.com/ar-nowaczynski/htmlcreator/blob/master/examples/first_document.html).
+See example [build_document.py](https://github.com/ar-nowaczynski/htmlcreator/blob/master/examples/build_document.py) and [first_document.html](https://htmlpreview.github.io/?https://github.com/ar-nowaczynski/htmlcreator/blob/master/examples/first_document.html).
 
 ## Installation
 
@@ -28,4 +28,4 @@ $ pip install htmlcreator
 
 ## License
 
-MIT License (see [LICENSE](./LICENSE)).
+MIT License (see [LICENSE](https://github.com/ar-nowaczynski/htmlcreator/blob/master/LICENSE)).

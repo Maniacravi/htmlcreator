@@ -22,13 +22,19 @@ def test_HTMLDocument():
 
     document.add_header(header='header', level='h2', align='left')
 
-    document.add_text(text='text', indent='0', align='left')
+    document.add_text(text='text', size='15px', indent='0', align='left')
 
     document.add_line_break()
 
     document.add_page_break()
 
     document.add_table(df=_get_df())
+
+    try:
+        document.add_table(df=[_get_df()])
+    except Exception as e:
+        assert isinstance(e, TypeError)
+        assert str(e) == "df is of type <class 'list'>, but it should be of type <class 'pandas.core.frame.DataFrame'>."
 
     document.add_image(image=_get_image_array(), title='title', height=320, width=480, pixelated=False)
 

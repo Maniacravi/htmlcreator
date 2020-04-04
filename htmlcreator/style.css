@@ -3,37 +3,41 @@ body {
     margin: auto;
     font-family: sans-serif;
 }
+div.pandas-dataframe {
+    overflow: auto;
+}
 table.dataframe {
     border-collapse: collapse;
     border: none;
 }
 table.dataframe td {
-  margin: 0;
-  padding-top: 0.3em;
-  padding-bottom: 0.3em;
-  padding-left: 0.3em;
-  padding-right: 0.3em;
-  border: 2px solid #ccf;
-  font-size: 12px;
-  white-space: nowrap;
   background-color: #fffef4;
-  min-width: 30px;
-  border: 1px solid #faeee4;
+  font-size: 14px;
   text-align: center;
+  white-space: nowrap;
+  margin: 0;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border: 1px solid #d7d7d7;
 }
 table.dataframe th {
   background-color: #f9f9f9;
-  font-size: 10px;
+  font-size: 12px;
   text-align: center;
-  border: none;
-  padding-left: 0.3em;
-  padding-right: 0.3em;
+  white-space: nowrap;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid #e0e0e0;
 }
 table.dataframe tr:nth-child(even) td {
-  background: #fcf8f0;
+  background: #fff2e4;
 }
 table.dataframe tr:nth-child(odd) td {
-  background: #fffef4;
+  background: #ffffe8;
 }
 table.dataframe tr:hover td {
   background-color: #ddeeff;

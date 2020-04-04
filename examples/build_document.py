@@ -18,8 +18,8 @@ document.add_header('my first document header level 1', level='h1', align='cente
 document.add_header('section header level 2')  # defaults: level='h2' align='left'
 
 # Add text paragraphs
-document.add_text(', '.join(['this is text'] * 50), indent='15px', align='justify')
-document.add_text('another text')  # defaults: indent='0' alight='left'
+document.add_text(', '.join(['this is text'] * 50), size='14px', indent='15px', align='justify')
+document.add_text('another text')  # defaults: size='16px', indent='0' alight='left'
 
 # Embed images
 document.add_header('images section')
@@ -59,4 +59,4 @@ document.add_header('after page break')
 # Write to file
 output_filepath = 'first_document.html'
 document.write(output_filepath)
-print(f'{output_filepath} was saved successfully!')
+print(f'{output_filepath} has been saved successfully!')
