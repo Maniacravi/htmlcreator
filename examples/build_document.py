@@ -56,6 +56,11 @@ document.add_text('before page break')
 document.add_page_break()
 document.add_header('after page break')
 
+# Add image link (filepath or URL)
+document.add_header('image from the Internet')
+image_url = 'https://spacecenter.org/wp-content/uploads/2020/01/KSC-20200117-PH-SPX01_0001_medium.jpg'
+document.add_image_link(image_url, width='100%')
+
 # Write to file
 output_filepath = 'first_document.html'
 document.write(output_filepath)

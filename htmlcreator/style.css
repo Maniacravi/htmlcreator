@@ -1,6 +1,7 @@
 body {
     max-width: 960px;
     margin: auto;
+    padding-bottom: 20px;
     font-family: sans-serif;
 }
 div.pandas-dataframe {

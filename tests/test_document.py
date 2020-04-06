@@ -44,7 +44,11 @@ def test_HTMLDocument():
 
     document.add_image(image=_TEST_IMAGE_PATH)
 
+    document.add_image_link(image_link=_TEST_IMAGE_PATH, title='title', width='100%')
+
     document.add_image(image=pathlib.Path(_TEST_IMAGE_PATH))
+
+    document.add_image_link(image_link=pathlib.Path(_TEST_IMAGE_PATH))
 
     _remove_test_image()
 
@@ -65,6 +69,12 @@ def test_HTMLDocument():
     except Exception as e:
         assert isinstance(e, TypeError)
         assert str(e) == "image is of type <class 'list'>, but it should be one of: <class 'numpy.ndarray'>, <class 'PIL.Image.Image'>, <class 'pathlib.Path'> or <class 'str'>."
+
+    try:
+        document.add_image_link(image_link=_get_image_array())
+    except Exception as e:
+        assert isinstance(e, TypeError)
+        assert str(e) == "image_link is of type <class 'numpy.ndarray'>, but it should be <class 'pathlib.Path'> or <class 'str'>."
 
     document.write(_TEST_DOCUMENT_PATH)
 

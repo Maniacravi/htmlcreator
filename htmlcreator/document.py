@@ -59,7 +59,7 @@ class HTMLDocument:
         self.body += (
             f'<p style="font-size:{size}; text-indent: {indent}; text-align: {align}">'
             f'{text}'
-            f'</p>\n'
+            '</p>\n'
         )
 
     def add_line_break(self) -> None:
@@ -86,24 +86,46 @@ class HTMLDocument:
         self,
         image: Union[np.ndarray, PIL.Image.Image, pathlib.Path, str],
         title: Optional[str] = None,
-        height: Optional[int] = None,
-        width: Optional[int] = None,
+        height: Optional[Union[int, str]] = None,
+        width: Optional[Union[int, str]] = None,
         pixelated: bool = False,
     ) -> None:
         """Embed image."""
         image_encoded_str = self._encode_image(image)
-        image_tag = f'<img src="data:image/png;base64, {image_encoded_str}"'
-        if title:
-            image_tag += f' title={title}'
-        if height:
-            image_tag += f' height={height}'
-        if width:
-            image_tag += f' width={width}'
-        image_tag += ' style="border:1px solid #021a40; margin: 3px 3px'
-        if pixelated:
-            image_tag += '; image-rendering: pixelated'
-        image_tag += '">\n'
-        self.body += image_tag
+        image_src = f'data:image/png;base64, {image_encoded_str}'
+        self._add_image_tag(
+            src=image_src,
+            title=title,
+            height=height,
+            width=width,
+            pixelated=pixelated,
+        )
+
+    def add_image_link(
+        self,
+        image_link: Union[pathlib.Path, str],
+        title: Optional[str] = None,
+        height: Optional[Union[int, str]] = None,
+        width: Optional[Union[int, str]] = None,
+        pixelated: bool = False,
+    ) -> None:
+        """Add image link (filepath or URL)."""
+        if isinstance(image_link, pathlib.Path):
+            image_src = str(image_link)
+        elif isinstance(image_link, str):
+            image_src = image_link
+        else:
+            raise TypeError(
+                f'image_link is of type {type(image_link)}, '
+                f'but it should be {pathlib.Path} or {str}.'
+            )
+        self._add_image_tag(
+            src=image_src,
+            title=title,
+            height=height,
+            width=width,
+            pixelated=pixelated,
+        )
 
     def set_style(self, style: str) -> None:
         """Set CSS style."""
@@ -117,6 +139,28 @@ class HTMLDocument:
         """Save to filepath."""
         with open(filepath, 'w') as f:
             f.write(str(self))
+
+    def _add_image_tag(
+        self,
+        src: str,
+        title: Optional[str] = None,
+        height: Optional[Union[int, str]] = None,
+        width: Optional[Union[int, str]] = None,
+        pixelated: bool = False,
+    ) -> None:
+        """Add image tag."""
+        image_tag = f'<img src="{src}"'
+        if title:
+            image_tag += f' title={title}'
+        if height:
+            image_tag += f' height={height}'
+        if width:
+            image_tag += f' width={width}'
+        image_tag += ' style="border:1px solid #021a40; margin: 3px 3px'
+        if pixelated:
+            image_tag += '; image-rendering: pixelated'
+        image_tag += '">\n'
+        self.body += image_tag
 
     def _encode_image(
         self,

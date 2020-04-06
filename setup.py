@@ -6,7 +6,7 @@ README_TEXT = README_PATH.read_text()
 
 setup(
     name='htmlcreator',
-    version='0.2.0',
+    version='0.3.0',
     license='MIT',
     description='Build standalone HTML documents from Python code',
     long_description=README_TEXT,
